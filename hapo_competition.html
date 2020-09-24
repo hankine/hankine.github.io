@@ -1,0 +1,19 @@
+<meta charset="utf-8" />
+<script>
+function changeHapoUrl(url) {$("#hapo_content").load(url); }
+changeHapoUrl('hapo_competition_1.html');
+</script>
+<table width="775px" border="0" cellpadding="2" background="images/bg.jpg">
+	<tr>
+		<td width="100%"><p align="center"><img src="images/hapo_competition_header.jpg" width="748px" height="153px" border="0" usemap="#Map" />
+		<map name="Map">
+			<area shape="poly" coords="19,97,170,97,181,106,187,117,187,130,180,142,168,148,22,148,12,143,4,131,3,116,8,103" href="#" onClick="changeHapoUrl('hapo_competition_1.html');" />
+			<area shape="poly" coords="209,97,351,96,365,103,372,116,372,135,365,142,355,148,209,148,198,142,191,130,191,115,197,105" href="#" onclick="changeHapoUrl('hapo_competition_2.html');" />
+			<area shape="poly" coords="394,96,536,96,550,102,558,111,559,129,553,140,543,148,396,148,383,140,377,131,376,113,383,103" href="#" onClick="changeHapoUrl('hapo_competition_3.html');" />
+			<area shape="poly" coords="581,95,723,95,736,102,743,114,744,133,736,140,728,148,581,148,570,141,565,131,563,111,571,100" href="#" onClick="changeHapoUrl('hapo_competition_4.html');" />
+		</map>
+		</p> 
+		</td>
+	</tr>
+	<tr><td width="100%"><span id="hapo_content"></span></td></tr>
+</table>
