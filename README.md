@@ -1,5 +1,9 @@
 # hankine.github.io
 
+version: 20210925
+
+* 訂為運作版本。 
+
 version: 20200921
 
 * 改寫為 HTML5 靜態網頁，並放到 Github Pages 上。
