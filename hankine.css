@@ -12,8 +12,8 @@ body {
   text-align: center;
 }
 
-.table_solid {border-collapse: collapse; border: 1px solid; padding: 2px; border-spacing: 0px; }
-.table_solid th, .table_solid td {border: 1px solid; text-align: center;}
+.table_solid {border-collapse: collapse; border: 1px solid;}
+.table_solid th, .table_solid td {border: 1px solid; text-align: center; padding: 4px; border-spacing: 0; }
 
 ul.drop-down-menu,
 ul.drop-down-menu ul,
