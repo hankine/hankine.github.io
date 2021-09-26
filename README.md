@@ -1,7 +1,7 @@
 # hankine.github.io
 
 <<<<<<< HEAD
-version: 20210925
+version: 20210926
 
 * 訂為運作版本。 
 
