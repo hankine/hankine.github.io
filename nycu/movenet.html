@@ -49,7 +49,7 @@
 
 </html>
 <script>
-    const ScoreThreshold = 0.6;
+    const ScoreThreshold = 0.5;
 
     let model_type;
     let model_string = "SINGLEPOSE_LIGHTNING";
@@ -138,6 +138,9 @@
         console.log("vidoePlaying:" + vidoePlaying);
     }
 
+    function mouseClicked() {
+        console.log(poses);
+    }
 
     const skeleton = [[0, 1], [0, 2], [1, 3], [2, 4], [0, [6, 5]], [6, 5], [5, 7], [6, 8], [7, 9], [8, 10], [[5, 6], [11, 12]], [[11, 12], 11], [[11, 12], 12], [11, 13], [12, 14], [13, 15], [14, 16],];
 
@@ -170,34 +173,38 @@
         if (video) {
             image(video, 0, 0);
             if (poses && poses.length > 0) {
-                stroke(0, 255, 0);
-                strokeWeight(2);
-                for (let edge of skeleton) {
-                    let start = getKeypointForEdgeVertex(poses[0].keypoints, edge[0]);
-                    let end = getKeypointForEdgeVertex(poses[0].keypoints, edge[1]);
-                    if (start && end) line(start.x, start.y, end.x, end.y);
-                }
+                for (let people = 0; people < poses.length; people++) {
+                    if (people == 0) {
+                        stroke(0, 255, 0);
+                        strokeWeight(2);
+                        // keypoints display
+                        outKeypoints(poses[people].keypoints);
+                    }
 
-                // keypoints display
-                outKeypoints(poses[0].keypoints);
+                    for (let edge of skeleton) {
+                        let start = getKeypointForEdgeVertex(poses[people].keypoints, edge[0]);
+                        let end = getKeypointForEdgeVertex(poses[people].keypoints, edge[1]);
+                        if (start && end) line(start.x, start.y, end.x, end.y);
+                    }
 
-                for (let i = 0; i < poses[0].keypoints.length; i++) {
-                    const { x, y, score } = poses[0].keypoints[i];
-                    if (score > ScoreThreshold) {
-                        fill(255, 0, 0);
-                        stroke(255);
-                        strokeWeight(1);
-                        // circle(x, y, 8);
+                    for (let i = 0; i < poses[people].keypoints.length; i++) {
+                        const { x, y, score } = poses[people].keypoints[i];
+                        if (score > ScoreThreshold) {
+                            fill(255, 0, 0);
+                            stroke(255);
+                            strokeWeight(1);
+                            // circle(x, y, 8);
 
-                        circle(x, y, 16);
-                        push();
-                        fill(255);
-                        noStroke();
-                        textSize(12);
-                        textAlign(CENTER, CENTER);
-                        text(`${i}`, x, y);
-                        pop();
+                            circle(x, y, 16);
+                            push();
+                            fill(255);
+                            noStroke();
+                            textSize(12);
+                            textAlign(CENTER, CENTER);
+                            text(`${i}`, x, y);
+                            pop();
 
+                        }
                     }
                 }
             }
