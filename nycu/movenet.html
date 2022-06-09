@@ -87,12 +87,15 @@
 
     async function handleFile(file) {
         // if (video) video = null;
+        // video = null;
+        noLoop();
         $("#msg").html('keypoints');
         if (file.type === 'video') {
             video = createVideo(file.data, videoReady);
             video.volume(0);
             video.play();
             vidoePlaying = true;
+            loop();
         } else {
             video = null;
         }
